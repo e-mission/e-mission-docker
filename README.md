@@ -1,5 +1,6 @@
 # Docker usage instructions
 This project is now published on dockerhub!
+https://hub.docker.com/r/emission/e-mission-server/
 
 This image currently requires an external mongodb instance to run, so we
 strongly recommend using `docker-compose` to create a full setup. We have added
@@ -83,7 +84,7 @@ docker container.
 
 (loading test data using instructions at https://github.com/e-mission/e-mission-server#quick-start)
 
-- The container name is `juypter-notebook_web-server_1`, so we run 
+- The container name is `juypter-notebook_web-server_1` 
 
     ```
     $ docker ps -a
@@ -92,7 +93,7 @@ docker container.
     f6c2d04f8164        mongo:latest                  "docker-entrypoint.s…"   38 minutes ago      Up 2 minutes        0.0.0.0:27017->27017/tcp           juypter-notebook_db_1
     ```
 
-- Load the test data
+- So we use it to load the test data
 
     ```
     $ CONTAINER=juypter-notebook_web-server_1 bin/e-mission-py.bash bin/debug/load_timeline_for_day_and_user.py emission/tests/data/real_examples/shankari_2015-07-22 test_july_22
