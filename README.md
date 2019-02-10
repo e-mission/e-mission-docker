@@ -13,10 +13,10 @@ The standard `Dockerfile` and startup script are in this directory.
 
 Instructions on re-building the image for upload to DockerHub are [in the build instructions](#Docker_Build_Instructions)
 
-   - [Quick start installation instructions](#Quick-start_installation_instructions)
-   - [Using scripts](#Using_scripts)
-   - [Tweaking the image](#Tweaking_the_image)
-   - [Connecting to the created container](#Connecting_to_the_created_container)
+   - [Quick start installation instructions](#quick-start-installation-instructions)
+   - [Using scripts](#using-scripts)
+   - [Tweaking the image](#tweaking-the-image)
+   - [Connecting to the created container](#connecting-to-the-created-container)
 
 ### Quick-start installation instructions
 
@@ -95,7 +95,8 @@ docker container.
 - Load the test data
 
     ```
-    $ docker exec -it juypter-notebook_web-server_1 bash -c "source activate emission && ./e-mission-py.bash bin/debug/load_timeline_for_day_and_user.py emission/tests/data/real_examples/shankari_2015-07-22 test_july_22"
+    $ CONTAINER=juypter-notebook_web-server_1 bin/e-mission-py.bash bin/debug/load_timeline_for_day_and_user.py emission/tests/data/real_examples/shankari_2015-07-22 test_july_22
+    ARGS=bin/debug/load_timeline_for_day_and_user.py emission/tests/data/real_examples/shankari_2015-07-22 test_july_22
     Connecting to database URL db
     emission/tests/data/real_examples/shankari_2015-07-22
     Loading file emission/tests/data/real_examples/shankari_2015-07-22
