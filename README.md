@@ -3,11 +3,11 @@ This project is now published on dockerhub!
 
 This image currently requires an external mongodb instance to run, so we
 strongly recommend using `docker-compose` to create a full setup. We have added
-[examples](https://github.com/e-mission/e-mission-docker/tree/master/examples)
+[examples](examples)
 for various scenarios - please see the `README.md` for each scenario for
 more details.
 
-**`docker-compose` examples are in the [examples](https://github.com/e-mission/e-mission-docker/tree/master/examples) directory**
+**`docker-compose` examples are in the [examples](examples) directory**
 
 The standard `Dockerfile` and startup script are in this directory.
 
