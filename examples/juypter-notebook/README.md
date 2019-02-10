@@ -4,7 +4,7 @@ This starts a jupyter notebook server with the emission modules loaded,
 connected to a database.
 
 This is also an example of [tweaking the standard
-image](../../README.md#Tweaking_the_image). We copy over a startup file
+image](../../README.md#tweaking-the-image). We copy over a startup file
 (`start_notebook.sh`) that launches a juypter server instead of the standard
 emission server. Note that this requires an extra command if the base image has
 changed.
@@ -24,7 +24,7 @@ There are some special instructions for running this container.
     ```
 1. Copy-paste that URL into the browser
     - Make sure to [change `localhost` to the correct
-host IP for your operating system if needed](../../README.md#Connecting_to_the_created_container)
+host IP for your operating system if needed](../../README.md#connecting-to-the-created-container)
 
 1. Note that because of the way that docker works, all the notebooks created in the main e-mission-server directory are essentially **temporary**.
     - they will be **retained** when you kill (Ctrl+C) and restart (`up`)the containers.
@@ -37,4 +37,4 @@ The server is started on port 8888.
 
 - So on \*nix systems, this server is at http://localhost:8888
 - For other operating systems, you may have to [use a different host than
-  `localhost`](../../README.md#Connecting_to_the_created_container)
+  `localhost`](../../README.md#connecting-to-the-created-container)
