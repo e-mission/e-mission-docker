@@ -6,8 +6,7 @@ connected to a database.
 This is also an example of [tweaking the standard
 image](../../README.md#tweaking-the-image). We copy over a startup file
 (`start_notebook.sh`) that launches a juypter server instead of the standard
-emission server. Note that this requires an extra command if the base image has
-changed.
+emission server. Because this is a tweaked image, [it requires an extra `build` step if the e-mission server image has changed](../../README.md#tweaking-the-image).
 
 There are some special instructions for running this container.
 1. **Do not use** the `-d` option. You want to be able to see the logs.
@@ -29,7 +28,7 @@ host IP for your operating system if needed](../../README.md#connecting-to-the-c
 1. Note that because of the way that docker works, all the notebooks created in the main e-mission-server directory are essentially **temporary**.
     - they will be **retained** when you kill (Ctrl+C) and restart (`up`)the containers.
     - they will be **deleted** when the container is removed (e.g. when you run `docker-compose down`).
-      - If you want to preserve your notebooks, across `up/down` sessions, store them in the **`saved-notebooks`** directory.
+      - If you want to preserve your notebooks across `up/down` sessions, store them in the **`saved-notebooks`** directory.
 
 ### Testing
 
