@@ -2,6 +2,8 @@
 This project is now published on dockerhub!
 https://hub.docker.com/r/emission/e-mission-server/
 
+**Issues:** Since this repository is part of a larger project, all issues are tracked [in the central docs repository](https://github.com/e-mission/e-mission-docs/issues).
+
 This image currently requires an external mongodb instance to run, so we
 strongly recommend using `docker-compose` to create a full setup. We have added
 [examples](examples)
@@ -131,6 +133,17 @@ container when the e-mission image is updated.
 docker-compose -f <path_to_docker-compose.yml> build --pull
 docker-compose -f <path_to_docker-compose.yml> up -d
 ```
+
+### Using a docker container for development
+This is not a great idea, because the point of using containers is to have
+slimmed-down micro services with reproducible deployments. So you shouldn't
+really load a lot of editors into container, and by default, you can't edit the
+code files outside the container. You should really use the [manual install](https://github.com/e-mission/e-mission-docs/blob/master/docs/e-mission-server/manual_install.md)
+instead.
+
+If you really want to edit the source code in the docker image, you can try
+[the wisdom of the internet](https://stackoverflow.com/a/43548695), but we have
+not tested any of the approaches.
 
 ### Connecting to the created container
 After you have created the container, you will probably want to connect to a
