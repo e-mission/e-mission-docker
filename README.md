@@ -176,6 +176,7 @@ There are two main `e-mission-server` tags.
    ```
    docker build -f Dockerfile -t emission/e-mission-server:latest .
    docker build -f Dockerfile.nomkl -t emission/e-mission-server:nomkl-latest .
+   docker build -f examples/juypter-notebook/Dockerfile.small -t emission/e-mission-server:notebook-latest examples/juypter-notebook/
    ```
 
 1. Tag the release (make sure you are in the owners group for emission, or
@@ -184,6 +185,7 @@ There are two main `e-mission-server` tags.
    ```
    docker tag emission/e-mission-server:latest emission/e-mission-server:<version>
    docker tag emission/e-mission-server:nomkl-latest emission/e-mission-server:nomkl-<version>
+   docker tag emission/e-mission-server:notebook-latest emission/e-mission-server:notebook-<version>
    ```
    
 1. Push the release 
@@ -194,5 +196,7 @@ There are two main `e-mission-server` tags.
    docker push emission/e-mission-server:latest
    docker push emission/e-mission-server:nomkl-<version>
    docker push emission/e-mission-server:nomkl-latest
+   docker push emission/e-mission-server:notebook-<version>
+   docker push emission/e-mission-server:notebook-latest
    ```
 

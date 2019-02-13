@@ -1,9 +1,7 @@
 version: "3"
 services:
   web-server:
-    build:
-      context: .
-      dockerfile: Dockerfile.small
+    image: emission/e-mission-server:notebook-latest
     depends_on:
       - db
     environment:
