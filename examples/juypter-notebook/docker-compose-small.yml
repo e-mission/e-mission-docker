@@ -1,7 +1,9 @@
 version: "3"
 services:
   web-server:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.small
     depends_on:
       - db
     environment:
