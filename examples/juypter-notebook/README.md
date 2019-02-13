@@ -32,12 +32,12 @@ Use that token in the notebook server that you get when you click on the link to
 
 ![port 8888 link](port_8888.png)
 
+#### Getting the token when running on your own computer
+
 The default `docker-compose.yml` is also an example of [tweaking the standard
 image](../../README.md#tweaking-the-image). We copy over a startup file
 (`start_notebook.sh`) that launches a juypter server instead of the standard
 emission server. Because this is a tweaked image, [it requires an extra `build` step if the e-mission server image has changed](../../README.md#tweaking-the-image).
-
-#### Getting the token when running on your own computer
 
 There are some special instructions for running this container.
 1. **Do not use** the `-d` option. You want to be able to see the logs.
