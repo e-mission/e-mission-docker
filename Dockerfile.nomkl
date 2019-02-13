@@ -9,7 +9,7 @@ WORKDIR /usr/src/app
 RUN git clone https://github.com/e-mission/e-mission-server.git .
 
 # setup python environment.
-RUN conda env update --name emission --file setup/environment36.yml
+RUN conda env update --name emission --file setup/environment36.nomkl.yml
 RUN conda clean -t
 RUN conda clean -p
 
