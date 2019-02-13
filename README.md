@@ -12,14 +12,20 @@ more details.
 
 **`docker-compose` examples are in the [examples](examples) directory**
 
-The standard `Dockerfile` and startup script are in this directory.
+The standard `Dockerfile`s and startup script are in this directory.
 
 Instructions on re-building the image for upload to DockerHub are [in the build instructions](#Docker_Build_Instructions)
 
+[![Try in PWD](https://raw.githubusercontent.com/play-with-docker/stacks/master/assets/images/button.png)](https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/e-mission/e-mission-docker/master/examples/em-server/docker-compose.yml)
+
+   - [Try in PWD](#try-in-pwd)
    - [Quick start installation instructions](#quick-start-installation-instructions)
    - [Using scripts](#using-scripts)
    - [Tweaking the image](#tweaking-the-image)
    - [Connecting to the created container](#connecting-to-the-created-container)
+
+### Try in PWD
+[Play With Docker (PWD)](https://labs.play-with-docker.com/) is a docker playground allows you to deploy docker images with the click of a button. The images are short-lived, so they are not a substitute for real cloud resources, but they are a quick way to experiment and ensure that everything works. Each example README (including this one!) has at least one PWD button; you can also use the generated instance(s) to experiment with more complex docker installations. Questions? [PWD has extensive documentation](https://training.play-with-docker.com/).
 
 ### Quick-start installation instructions
 
@@ -161,10 +167,15 @@ server running on it. The host to use for the connection is a bit tricky.
 
 #### e-mission-server image
 
+There are two main `e-mission-server` tags.
+  - The default uses the [mkl optimizations](https://docs.anaconda.com/mkl-optimizations/)
+  - the `nomkl` versions are [smaller and less optimized](https://github.com/e-mission/e-mission-server/pull/637)
+
 1. Build local docker image
 
    ```
    docker build -f Dockerfile -t emission/e-mission-server:latest .
+   docker build -f Dockerfile.nomkl -t emission/e-mission-server:nomkl-latest .
    ```
 
 1. Tag the release (make sure you are in the owners group for emission, or
@@ -172,6 +183,7 @@ server running on it. The host to use for the connection is a bit tricky.
 
    ```
    docker tag emission/e-mission-server:latest emission/e-mission-server:<version>
+   docker tag emission/e-mission-server:nomkl-latest emission/e-mission-server:nomkl-<version>
    ```
    
 1. Push the release 
@@ -180,5 +192,7 @@ server running on it. The host to use for the connection is a bit tricky.
    docker login
    docker push emission/e-mission-server:<version>
    docker push emission/e-mission-server:latest
+   docker push emission/e-mission-server:nomkl-<version>
+   docker push emission/e-mission-server:nomkl-latest
    ```
 

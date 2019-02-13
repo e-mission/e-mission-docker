@@ -3,6 +3,8 @@
 This starts the main e-mission server. Use this if you want to connect the
 phone app to it, either to collect data or for e2e development.
 
+[![Try in PWD](https://raw.githubusercontent.com/play-with-docker/stacks/master/assets/images/button.png)](https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/e-mission/e-mission-docker/master/examples/em-server/docker-compose.yml)
+
 ### Testing
 
 The server is started on port 8080. 

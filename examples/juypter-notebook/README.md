@@ -3,6 +3,8 @@
 This starts a jupyter notebook server with the emission modules loaded,
 connected to a database.
 
+[![Try in PWD](https://raw.githubusercontent.com/play-with-docker/stacks/master/assets/images/button.png)](https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/e-mission/e-mission-docker/master/examples/juypter-notebook/docker-compose-small.yml)
+
 This is also an example of [tweaking the standard
 image](../../README.md#tweaking-the-image). We copy over a startup file
 (`start_notebook.sh`) that launches a juypter server instead of the standard
@@ -29,6 +31,14 @@ host IP for your operating system if needed](../../README.md#connecting-to-the-c
     - they will be **retained** when you kill (Ctrl+C) and restart (`up`)the containers.
     - they will be **deleted** when the container is removed (e.g. when you run `docker-compose down`).
       - If you want to preserve your notebooks across `up/down` sessions, store them in the **`saved-notebooks`** directory.
+
+### Other options
+
+Using `docker-compose-small.yml` generates a smaller, less optimized image, [without the `mkl` optimizations](https://docs.anaconda.com/mkl-optimizations/). This is the version that runs by default in PWD.
+
+    ```
+    docker-compose -f examples/juypter-notebook/docker-compose-small.yml up
+    ```
 
 ### Testing
 
