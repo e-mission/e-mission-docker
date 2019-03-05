@@ -31,7 +31,8 @@ Instructions on re-building the image for upload to DockerHub are [in the build 
 
 **Note 1:** This is *NOT* a comprehensive guide to installing or troubleshooting docker. That is beyond the scope of this project. If you have any questions about the way in which e-mission *uses* docker - e.g. our `Dockerfile` or the `docker-compose.yml` examples listed above, please file [an issue](https://github.com/e-mission/e-mission-docs/issues). If you have a generic docker installation or troubleshooting question, check the docker documentation or stackoverflow.
 
-**Note 2:** These instructions assume the use of a POSIX-compliant command line interface. So they will work without modification on **linux and OSX**. If you are on **Windows**, I **strongly** recommend using a POSIX-compliant CLI (such as [gitbash](https://openhatch.org/missions/windows-setup/install-git-bash)). You can also use the windows `cmd.exe` or GUI tools but in that case, *you are responsible* for figuring out how to translate these commands appropriately (e.g. converting `/` to `\` in `cmd.exe`). Don't use them unless you are very comfortable with the windows command line or powershell; *I cannot help you* if you choose this option.
+**Note 2:** These instructions assume the use of a POSIX-compliant command line interface. So they will work without modification on **linux and OSX**. If you are on **Windows**, I **strongly** recommend using a POSIX-compliant CLI (such as [gitbash](https://openhatch.org/missions/windows-setup/install-git-bash)).
+You can also use the windows `cmd.exe` or GUI tools but in that case, *you are responsible* for figuring out how to translate these commands appropriately (e.g. converting `/` to `\` in `cmd.exe`). Don't use them unless you are very comfortable with the windows command line or powershell; *I cannot help you* unless you are using gitbash.
 
 1. Clone this repository to your computer
 
