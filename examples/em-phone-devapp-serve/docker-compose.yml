@@ -1,0 +1,13 @@
+version: "3"
+services:
+  web-server:
+    image: emission/e-mission-phone.dev.ui-only:latest
+    environment:
+      - PHONE_REPO=https://github.com/e-mission/e-mission-phone.git
+    ports:
+      #This is a default port mapping. In production you might want to use 80:8080,
+      - "3000:3000"
+    volumes:
+      - /tmp/e-mission-phone-docker:/src/
+    
+

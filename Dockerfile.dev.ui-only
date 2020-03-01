@@ -43,7 +43,7 @@ RUN set -ex \
 # RUN /bin/bash -c "source /root/.nvm/nvm.sh; nvm install 9.4.0"
  
 # Upgrade the version of npm to the correct one
-RUN npm install npm@6.0.0
+RUN npm install -g npm@6.0.0
 
 # Install bower
 RUN npm install -g bower
@@ -51,22 +51,10 @@ RUN npm install -g bower
 # Git for checking out code
 RUN apt-get -y install git
 
+ADD start_devapp_serve.sh /start_devapp_serve.sh
+
 #declare environment variables
-ARG PHONE_REPO='https://github.com/e-mission/e-mission-phone.git'
-
-# Clone the repo 
-RUN git clone $PHONE_REPO
-
-# Run the other setup steps
-WORKDIR /e-mission-phone
-RUN git clone https://github.com/driftyco/ionic-package-hooks.git ./package-hooks
-RUN ./bin/configure_xml_and_json.js serve
-RUN npm install
-RUN bower install --allow-root
-# RUN chmod a+x hooks/before_prepare/download_translation.js
-# RUN npm run sass-build
-RUN npm run setup-serve
-
+ENV PHONE_REPO='https://github.com/e-mission/e-mission-phone.git'
 EXPOSE 3000
 
-CMD ["npm", "run", "serve"]
+CMD ["/bin/bash", "/start_devapp_serve.sh"]
