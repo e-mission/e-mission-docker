@@ -52,6 +52,8 @@ RUN npm install -g bower
 RUN apt-get -y install git
 
 ADD start_devapp_serve.sh /start_devapp_serve.sh
+# ADD autoreload.js /autoreload.js
+# ADD chokidar-index.js /chokidar-index.js
 
 #declare environment variables
 ENV PHONE_REPO='https://github.com/e-mission/e-mission-phone.git'
