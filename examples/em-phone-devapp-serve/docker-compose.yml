@@ -4,11 +4,17 @@ services:
     image: emission/e-mission-phone.dev.ui-only:latest
     environment:
       - PHONE_REPO=https://github.com/e-mission/e-mission-phone.git
-      - CHOKIDAR_USEPOLLING=true
+      - PHONE_BRANCH=master
+      # CHANGEME: enable this for autoreloading
+      # - CHOKIDAR_USEPOLLING=true
     ports:
-      #This is a default port mapping. In production you might want to use 80:8080,
       - "3000:3000"
-    volumes:
-      - /tmp/e-mission-phone-docker:/src/
+    # volumes:
+      # specify the host directory where the source code should live
+      # If this is ~/e-mission-phone-docker, then you can edit the files at
+      # ~/e-mission-phone-docker/e-mission-phone/www/...
+      # - ~/e-mission-phone-docker:/src/
+      # - CHANGEME:/src/
+      # - /tmp/e-mission-phone-docker:/src/
     
 

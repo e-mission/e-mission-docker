@@ -9,6 +9,8 @@ cd /src
 git clone $PHONE_REPO
 cd e-mission-phone
 git clone https://github.com/driftyco/ionic-package-hooks.git ./package-hooks
+git fetch origin $PHONE_BRANCH
+git checkout -f $PHONE_BRANCH
 node ./bin/configure_xml_and_json.js serve
 
 echo "About to install node modules"
@@ -23,7 +25,8 @@ echo "About to fix autoreload script"
 ORIG="path.join(process.cwd(), 'www/../.')"
 NEW="path.join(process.cwd(), 'www/js/**/*'), path.join(process.cwd(), 'www/templates/**/*')"
 echo "Replacing $ORIG -> $NEW"
-sed -i -e 's/$ORIG/$NEW/g' /src/e-mission-phone/node_modules//connect-phonegap/lib/middleware/autoreload.js
+sed -i -e "s|$ORIG|$NEW|g" /src/e-mission-phone/node_modules//connect-phonegap/lib/middleware/autoreload.js
+grep "path.join" /src/e-mission-phone/node_modules//connect-phonegap/lib/middleware/autoreload.js
 # cp /autoreload.js /src/e-mission-phone/node_modules//connect-phonegap/lib/middleware/
 # cp /chokidar-index.js /src/e-mission-phone/node_modules/chokidar/index.js
 
