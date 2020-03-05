@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #Configure web server
 
-#set database URL using environment variable
-echo "Cloning from repo "${PHONE_REPO}
+#set phone repo using environment variable
+echo "Cloning from repo "${PHONE_REPO}" and branch "$PHONE_BRANCH
 
 mkdir -p /src
 cd /src
