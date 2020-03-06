@@ -4,11 +4,12 @@ echo "Cloning from repo "${SERVER_REPO}" and branch "$SERVER_BRANCH
 mkdir -p /src
 cd /src
 git clone $SERVER_REPO
+echo "Finished cloning from repo "${SERVER_REPO}" and branch "$SERVER_BRANCH
 cd e-mission-server
-git clone https://github.com/driftyco/ionic-package-hooks.git ./package-hooks
 git fetch origin $SERVER_BRANCH
 git checkout -f $SERVER_BRANCH
 
+echo "About to start conda update, this may take some time..."
 conda env update --name emission --file setup/environment36.yml
 conda clean -t
 conda clean -p
@@ -35,6 +36,16 @@ else
     sed "s_localhost_${WEB_SERVER_HOST}_" conf/net/api/webserver.conf.sample > conf/net/api/webserver.conf
 fi
 cat conf/net/api/webserver.conf
+
+if [ -z ${LIVERELOAD_SRC}} ] ; then
+    echo "Live reload disabled, "
+else
+    echo "Enabling bottle live reload"
+    ORIG="run.host=server_host"
+    NEW="run(reloader=True,host=server_host"
+    echo "Replacing $ORIG -> $NEW"
+    sed -i -e "s|$ORIG|$NEW|g" /src/e-mission-server/emission/net/api/cfc_webapp.py
+fi
 
 source activate emission
 
