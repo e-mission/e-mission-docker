@@ -1,5 +1,5 @@
 # python 3
-FROM continuumio/miniconda3
+FROM continuumio/miniconda3:4.5
 
 MAINTAINER K. Shankari (shankari@eecs.berkeley.edu)
 # set working directory
