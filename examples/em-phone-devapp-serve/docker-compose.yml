@@ -1,0 +1,11 @@
+version: "3"
+services:
+  devapp-server:
+    image: emission/e-mission-phone.dev.ui-only:latest
+    environment:
+      - PHONE_REPO=https://github.com/e-mission/e-mission-phone.git
+      - PHONE_BRANCH=master
+    ports:
+      - "3000:3000"
+    
+

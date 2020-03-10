@@ -1,7 +1,7 @@
 This is an example of a multi-tier setup, with the webapp, analysis and
 database tiers separated. The analysis tier is autoconfigured with a cronjob.
-Having said that, there are multiple config options that need to be set before
-this container is run. These are:
+There are multiple config options that need to be set before this container is
+run. These are:
 
 - you need to create `conf` directories in both `webapp` and `analysis` with
   the appropriate config files.
