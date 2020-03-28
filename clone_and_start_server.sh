@@ -10,7 +10,7 @@ git fetch origin $SERVER_BRANCH
 git checkout -f $SERVER_BRANCH
 
 echo "About to start conda update, this may take some time..."
-conda env update --name emission --file setup/environment36.yml
+source setup/setup.sh
 conda clean -t
 conda clean -p
 

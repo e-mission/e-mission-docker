@@ -18,7 +18,7 @@ The server is started on port 8080.
 Modify the repo and branch if needed. The current code will be checked out to
 the container, and will be removed when the container is removed.
 
-### `docker-compose.dev.livereload.yml: deploy code for editing
+### `docker-compose.dev.livereload.yml`: deploy code for editing
 
 - The code will be mounted to a directory on your host
 - Edit the code on the host for auto-reload
