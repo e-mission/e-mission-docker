@@ -10,6 +10,7 @@ git fetch origin $SERVER_BRANCH
 git checkout -f $SERVER_BRANCH
 
 echo "About to start conda update, this may take some time..."
+source /opt/conda/etc/profile.d/conda.sh
 source setup/setup.sh
 conda clean -t
 conda clean -p
