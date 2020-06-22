@@ -46,7 +46,7 @@ RUN set -ex \
 RUN npm install -g npm@6.0.0
 
 # Install bower
-RUN npm install -g bower
+RUN npm install -g bower@1.8.4
 
 # Git for checking out code
 RUN apt-get -y install git
