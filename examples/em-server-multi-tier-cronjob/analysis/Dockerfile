@@ -1,12 +1,13 @@
 # python 3
-FROM emission/e-mission-server:latest
+FROM ubuntu:latest
 
 # CHANGEME: If you want to run from a different branch, change the <branch> below 
 # to the branch that you want to run
 # RUN git fetch origin <branch>
 # RUN git checkout -f <branch>
 
-RUN pip install devcron
+RUN apt-get update
+RUN apt-get install -y curl
 
 # CHANGEME: Configure push if necessary
 # COPY conf/net/ext_service/push.json /usr/src/app/conf/net/ext_service/push.json

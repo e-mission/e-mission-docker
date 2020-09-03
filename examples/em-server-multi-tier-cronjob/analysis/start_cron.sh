@@ -11,8 +11,17 @@ else
 fi
 cat conf/storage/db.conf
 
-# change python environment
-source activate emission
+echo "Setting up conda..."
+source setup/setup_conda.sh Linux-x86_64
+
+echo "Setting up the environment..."
+source setup/setup.sh
+
+echo "Activating the environment..."
+source setup/activate.sh
+
+echo "Installing devcron..."
+pip install devcron
 
 # launch the cronjob
 devcron crontab >> /var/log/cron.console.stdinout 2>&1

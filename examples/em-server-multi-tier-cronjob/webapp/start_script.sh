@@ -21,9 +21,14 @@ else
 fi
 cat conf/net/api/webserver.conf
 
-#TODO: start cron jobs
-# change python environment
-source activate emission
+echo "Setting up conda..."
+source setup/setup_conda.sh Linux-x86_64
+
+echo "Setting up the environment..."
+source setup/setup.sh
+
+echo "Activating the environment..."
+source setup/activate.sh
 
 # launch the webapp
 ./e-mission-py.bash emission/net/api/cfc_webapp.py >> /var/log/webapp.console.log 2>&1

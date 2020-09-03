@@ -15,7 +15,7 @@ services:
       # If you are exposing this directly, use 80:8080 or 443:8080
       # If you are using a reverse proxy, use a unique port and configure the
       # RP appropriately
-      # - "CHANGEME:8080"
+      - "8080:8080"
     networks:
       - emission
   analysis-server:
@@ -32,7 +32,7 @@ services:
     networks:
       - emission
   db:
-    image: mongo:3.4
+    image: mongo:4.4.0
     deploy:
       replicas: 1
       restart_policy:
