@@ -1,13 +1,18 @@
 # python 3
 FROM ubuntu:latest
 
+RUN apt-get update
+RUN apt-get install -y curl
+RUN apt-get install -y git
+
+WORKDIR /usr/src/app
+RUN git clone https://github.com/e-mission/e-mission-server.git
+WORKDIR /usr/src/app/e-mission-server
+
 # CHANGEME: If you want to run from a different branch, change the <branch> below 
 # to the branch that you want to run
 # RUN git fetch origin <branch>
 # RUN git checkout -f <branch>
-
-RUN apt-get update
-RUN apt-get install -y curl
 
 # CHANGEME: Configure push if necessary
 # COPY conf/net/ext_service/push.json /usr/src/app/conf/net/ext_service/push.json
