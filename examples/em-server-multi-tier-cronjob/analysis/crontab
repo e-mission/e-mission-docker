@@ -2,3 +2,4 @@
 # 45 * * * * ./e-mission-py.bash bin/make_tiersys.py >> /var/log/make_tiersys.stdinout 2>&1
 # 50 * * * * ./e-mission-py.bash bin/update_polarbear.py >> /var/log/update_polarbear.stdinout 2>&1
 # 55 * * * * ./e-mission-py.bash bin/check_for_notifications.py >> /var/log/check_for_notifications.stdinout 2>&1
+59 * * * * ./e-mission-py.bash bin/push/silent_ios_push.py 3600 >> /var/log/silent_ios_push.stdinout 2>&1
