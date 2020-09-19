@@ -24,4 +24,6 @@ echo "Installing devcron..."
 pip install devcron
 
 # launch the cronjob
-devcron crontab >> /var/log/cron.console.stdinout 2>&1
+echo "Launch the cronjob"
+# while true; do sleep 30; done;
+devcron ../crontab >> /var/log/cron.console.stdinout 2>&1

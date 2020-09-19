@@ -31,4 +31,5 @@ echo "Activating the environment..."
 source setup/activate.sh
 
 # launch the webapp
+echo "Launching the webapp"
 ./e-mission-py.bash emission/net/api/cfc_webapp.py >> /var/log/webapp.console.log 2>&1
