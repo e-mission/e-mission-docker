@@ -3,6 +3,8 @@ FROM ubuntu:latest
 
 MAINTAINER K. Shankari (shankari@eecs.berkeley.edu)
 
+WORKDIR /usr/src/app
+
 RUN apt-get update
 RUN apt-get install -y curl
 RUN apt-get install -y git
@@ -14,16 +16,25 @@ RUN apt-get -y install nano vim
 RUN apt-get -y remove --purge build-essential
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+ENV SERVER_REPO=${SERVER_REPO:-https://github.com/e-mission/e-mission-server.git}
+ENV SERVER_BRANCH=${SERVER_BRANCH:-master}
+
+ADD clone_server.sh /clone_server.sh
+RUN chmod u+x /clone_server.sh
+ADD index.html /index.html
+
+
 #declare environment variables
 ENV DB_HOST=''
 ENV WEB_SERVER_HOST=''
 
+ENV LIVERELOAD_SRC=''
 ADD start_script.sh /start_script.sh
-ADD clone_and_start_server.sh /clone_and_start_server.sh
-RUN chmod u+x /clone_and_start_server.sh
-
-ADD index.html /index.html
+RUN chmod u+x /start_script.sh
 
 EXPOSE 8080
 
-CMD ["/bin/bash", "/clone_and_start_server.sh"]
+# This clone puts the server code into the container, not the image
+# so the image is essentially a shell into which you can put the 
+# code from any branch
+CMD ["/bin/bash", "-c", "/clone_server.sh && /start_script.sh"]

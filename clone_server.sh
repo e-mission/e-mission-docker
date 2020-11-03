@@ -1,10 +1,10 @@
-#set phone repo using environment variable
-echo "Cloning from repo "${SERVER_REPO}" and branch "$SERVER_BRANCH
+cd /usr/src/app
 
-mkdir -p /src
-cd /src
+#set phone repo using environment variable
+echo "Cloning from repo "${SERVER_REPO}" and branch "$SERVER_BRANCH" into "$PWD
+
 git clone $SERVER_REPO
-echo "Finished cloning from repo "${SERVER_REPO}" and branch "$SERVER_BRANCH
+echo "Finished cloning from repo "${SERVER_REPO}" and branch "$SERVER_BRANCH" in "$PWD
 cd e-mission-server
 git fetch origin $SERVER_BRANCH
 git checkout -f $SERVER_BRANCH
@@ -17,17 +17,15 @@ conda clean -p
 
 cp /index.html webapp/www/index.html
 
-if [ -z ${LIVERELOAD_SRC}} ] ; then
+if [ -z ${LIVERELOAD_SRC} ] ; then
     echo "Live reload disabled, "
 else
     echo "Enabling bottle live reload"
     ORIG="run.host=server_host"
     NEW="run(reloader=True,host=server_host"
     echo "Replacing $ORIG -> $NEW"
-    sed -i -e "s|$ORIG|$NEW|g" /src/e-mission-server/emission/net/api/cfc_webapp.py
+    sed -i -e "s|$ORIG|$NEW|g" emission/net/api/cfc_webapp.py
 fi
-
-source /start_script.sh
 
 # use this as the launch script instead if the webapp is crashing
 # note that you need to manually start the server in that case
