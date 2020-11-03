@@ -17,6 +17,11 @@ conda clean -p
 
 cp /index.html webapp/www/index.html
 
+if [ -d "/conf" ]; then
+    echo "Found configuration, overriding..."
+    cp -r /conf/* conf/
+fi
+
 if [ -z ${LIVERELOAD_SRC} ] ; then
     echo "Live reload disabled, "
 else
