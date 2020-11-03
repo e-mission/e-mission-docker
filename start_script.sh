@@ -13,7 +13,7 @@ cat conf/storage/db.conf
 
 #set Web Server host using environment variable
 echo ${WEB_SERVER_HOST}
-if [ -z ${WEB_SERVER_HOST}} ] ; then
+if [ -z ${WEB_SERVER_HOST} ] ; then
     local_host=`hostname -i`
     sed "s_localhost_${local_host}_" conf/net/api/webserver.conf.sample > conf/net/api/webserver.conf
 else
@@ -23,7 +23,7 @@ cat conf/net/api/webserver.conf
 
 #TODO: start cron jobs
 # change python environment
-source activate emission
+source setup/activate.sh
 
 # launch the webapp
 ./e-mission-py.bash emission/net/api/cfc_webapp.py

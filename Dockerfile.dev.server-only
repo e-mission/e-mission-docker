@@ -1,17 +1,14 @@
 # python 3
-FROM continuumio/miniconda3:4.5
+FROM ubuntu:latest
 
 MAINTAINER K. Shankari (shankari@eecs.berkeley.edu)
 
-# set working directory
-WORKDIR /src
-
-# install nodejs, npm and bower
 RUN apt-get update
-RUN apt-get install -y build-essential
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
-RUN apt-get -y install nodejs
-RUN npm install -g bower
+RUN apt-get install -y curl
+RUN apt-get install -y git
+
+# install nano and vim for editing
+RUN apt-get -y install nano vim
 
 # cleanup
 RUN apt-get -y remove --purge build-essential
@@ -21,8 +18,11 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 ENV DB_HOST=''
 ENV WEB_SERVER_HOST=''
 
+ADD start_script.sh /start_script.sh
 ADD clone_and_start_server.sh /clone_and_start_server.sh
 RUN chmod u+x /clone_and_start_server.sh
+
+ADD index.html /index.html
 
 EXPOSE 8080
 
