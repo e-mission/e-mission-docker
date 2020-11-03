@@ -21,9 +21,9 @@ services:
       # specify the host directory where the source code should live
       # If this is ~/e-mission-phone-docker, then you can edit the files at
       # ~/e-mission-phone-docker/e-mission-phone/www/...
-      # - ~/e-mission-phone-docker:/src/
-      # - CHANGEME:/src/
-      # - /tmp/e-mission-phone-docker:/src/
+      # - ~/e-mission-phone-docker:/usr/src/app
+      # - CHANGEME:/usr/src/app/
+      # - /tmp/e-mission-phone-docker:/usr/src/app
     networks:
        - emission
   db:
