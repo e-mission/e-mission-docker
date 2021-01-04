@@ -1,5 +1,11 @@
 source /clone_server.sh
 
+if [[ -v SIMPLE_INDICES ]]; then
+    echo "Replacing database indices for compatibility with DocumentDB"
+    sed -i -e "s|HASHED|ASCENDING|" emission/core/get_database.py
+    sed -i -e "/GEOSPHERE/d" emission/core/get_database.py
+fi
+
 #set database URL using environment variable
 #in the webapp, this is set in start_script
 #but we don't call start_script here since we don't want to start the server
