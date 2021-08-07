@@ -11,15 +11,14 @@ cd e-mission-phone
 git clone https://github.com/driftyco/ionic-package-hooks.git ./package-hooks
 git fetch origin $PHONE_BRANCH
 git checkout -f $PHONE_BRANCH
-node ./bin/configure_xml_and_json.js serve
-
-echo "About to install node modules"
-npm install
-
-echo "About to install bower modules"
+# Restore the tail command below to debug image creation
+# tail -f /dev/null
+bash setup/setup_serve.sh
+# Normally, this would happen in the setup, but bower doesn't like running as root
+# and we are root in the container, of course
+# instead of changing that for everybody, we only change it in the container
 bower install --allow-root
-# chmod a+x hooks/before_prepare/download_translation.js
-# npm run sass-build
+source setup/activate_serve.sh
 
 echo "About to fix autoreload script"
 ORIG="path.join(process.cwd(), 'www/../.')"
@@ -31,5 +30,4 @@ grep "path.join" /src/e-mission-phone/node_modules//connect-phonegap/lib/middlew
 # cp /chokidar-index.js /src/e-mission-phone/node_modules/chokidar/index.js
 
 # launch the webapp
-npm run setup-serve
 npm run serve
