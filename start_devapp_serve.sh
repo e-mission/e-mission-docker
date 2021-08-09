@@ -14,10 +14,6 @@ git checkout -f $PHONE_BRANCH
 # Restore the tail command below to debug image creation
 # tail -f /dev/null
 bash setup/setup_serve.sh
-# Normally, this would happen in the setup, but bower doesn't like running as root
-# and we are root in the container, of course
-# instead of changing that for everybody, we only change it in the container
-bower install --allow-root
 source setup/activate_serve.sh
 
 echo "About to fix autoreload script"
