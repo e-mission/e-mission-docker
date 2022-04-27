@@ -1,7 +1,7 @@
 version: "3"
 services:
   devapp-server:
-    image: emission/e-mission-phone.dev.ui-only:4.4.0
+    image: emission/e-mission-phone.dev.ui-only:4.0.0
     environment:
       - PHONE_REPO=https://github.com/e-mission/e-mission-phone.git
       - PHONE_BRANCH=master
