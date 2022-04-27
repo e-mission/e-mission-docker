@@ -1,5 +1,5 @@
 # python 3
-FROM emission/e-mission-server.dev.server-only:2.9.1
+FROM emission/e-mission-server.dev.server-only:4.0.0
 
 COPY conf /conf
 

@@ -1,27 +1,13 @@
 # python 3
-FROM continuumio/miniconda3:4.5
+FROM continuumio/miniconda3:4.11.0
 
 MAINTAINER K. Shankari (shankari@eecs.berkeley.edu)
 # set working directory
 WORKDIR /usr/src/app
 
-# clone from repo
-RUN git clone https://github.com/e-mission/e-mission-server.git .
-
-# setup python environment.
-RUN conda env update --name emission --file setup/environment36.nomkl.yml
-RUN conda clean -t
-RUN conda clean -p
-
-# install nodejs, npm and bower
 RUN apt-get update
-RUN apt-get install -y build-essential
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
-RUN apt-get -y install nodejs
-RUN npm install -g bower
-WORKDIR /usr/src/app/webapp
-RUN bower update --allow-root
-WORKDIR /usr/src/app
+RUN apt-get install -y curl
+RUN apt-get install -y git
 
 # install nano and vim for editing
 RUN apt-get -y install nano vim
@@ -30,6 +16,28 @@ RUN apt-get -y install nano vim
 RUN apt-get -y remove --purge build-essential
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+#set phone repo using environment variable
+echo "Cloning from repo "${SERVER_REPO}" and branch "$SERVER_BRANCH" into "$PWD
+
+git clone $SERVER_REPO
+echo "Finished cloning from repo "${SERVER_REPO}" and branch "$SERVER_BRANCH" in "$PWD
+cd e-mission-server
+git fetch origin $SERVER_BRANCH
+git checkout -f $SERVER_BRANCH
+
+# setup base environment
+source setup/setup.sh
+
+# setup notebook specific code
+RUN conda env update --name emission --file setup/environment36.nomkl.yml
+RUN conda clean -t
+RUN conda clean -p
+
+if [ -d "/conf" ]; then
+    echo "Found configuration, overriding..."
+    cp -r /conf/* conf/
+fi
+
 #declare environment variables
 ENV DB_HOST=''
 ENV WEB_SERVER_HOST=''
@@ -37,10 +45,9 @@ ENV WEB_SERVER_HOST=''
 #add start script.
 # this is a redundant workdir setting, but it doesn't harm anything and might
 # be useful if the other one is removed for some reason
-WORKDIR /usr/src/app
-ADD start_script.sh /usr/src/app/start_script.sh
-RUN chmod u+x /usr/src/app/start_script.sh
+ADD start_script.sh /start_script.sh
+RUN chmod u+x /start_script.sh
 
 EXPOSE 8080
 
-CMD ["/bin/bash", "/usr/src/app/start_script.sh"]
+CMD ["/bin/bash", "/start_script.sh"]

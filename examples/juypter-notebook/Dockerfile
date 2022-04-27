@@ -1,5 +1,5 @@
 # python 3
-FROM emission/e-mission-server:latest
+FROM emission/e-mission-server:4.0.0
 
 RUN conda env update --name emission --file setup/environment36.notebook.additions.yml
 RUN conda clean -t

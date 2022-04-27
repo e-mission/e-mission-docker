@@ -1,5 +1,5 @@
 # python 3
-FROM ubuntu:latest
+FROM ubuntu:focal
 
 MAINTAINER K. Shankari (shankari@eecs.berkeley.edu)
 
