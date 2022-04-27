@@ -1,9 +1,10 @@
 # python 3
-FROM ubuntu:trusty
+FROM ubuntu:focal
 
 MAINTAINER K. Shankari (shankari@eecs.berkeley.edu)
 
 # setup the correct version of node using nvm
+RUN apt-get update
 RUN apt-get -y install curl
 RUN apt-get -y install xz-utils
 
