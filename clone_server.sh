@@ -15,7 +15,9 @@ source setup/setup.sh
 conda clean -t
 conda clean -p
 
-cp /index.html webapp/www/index.html
+if [ -d "webapp/www/" ]; then
+    cp /index.html webapp/www/index.html
+fi
 
 if [ -d "/conf" ]; then
     echo "Found configuration, overriding..."
