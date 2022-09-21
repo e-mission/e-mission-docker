@@ -1,5 +1,5 @@
 # python 3
-FROM emission/e-mission-server.dev.server-only:4.0.0
+FROM agutt/e-mission-server:ceo_ebike_project_2022-09-19--45-23
 
 COPY conf /conf
 
