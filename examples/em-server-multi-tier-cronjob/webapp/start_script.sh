@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
-source /clone_server.sh
+
+if [ -d "/conf" ]; then
+    echo "Found configuration, overriding..."
+    cp -r /conf/* conf/
+fi
 
 if [[ -v SIMPLE_INDICES ]]; then
     echo "Replacing database indices for compatibility with DocumentDB"
@@ -7,4 +11,4 @@ if [[ -v SIMPLE_INDICES ]]; then
     sed -i -e "/GEOSPHERE/d" emission/core/get_database.py
 fi
 
-source /start_script.sh
+source ./.docker/docker_start_script.sh

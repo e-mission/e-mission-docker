@@ -1,4 +1,7 @@
-source /clone_server.sh
+if [ -d "/conf" ]; then
+    echo "Found configuration, overriding..."
+    cp -r /conf/* conf/
+fi
 
 if [[ -v SIMPLE_INDICES ]]; then
     echo "Replacing database indices for compatibility with DocumentDB"
@@ -29,4 +32,4 @@ pip install devcron
 # launch the cronjob
 echo "Launch the cronjob"
 # while true; do sleep 30; done;
-devcron ../crontab >> /var/log/cron.console.stdinout 2>&1
+devcron ./.docker/crontab >> /var/log/cron.console.stdinout 2>&1
