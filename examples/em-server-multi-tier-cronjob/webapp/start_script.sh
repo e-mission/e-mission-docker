@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-source ./.docker/setup_config.sh
+if [ -d "/conf" ]; then
+    echo "Found configuration, overriding..."
+    cp -r /conf/* conf/
+fi
 
 if [[ -v SIMPLE_INDICES ]]; then
     echo "Replacing database indices for compatibility with DocumentDB"
