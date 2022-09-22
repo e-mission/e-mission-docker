@@ -1,5 +1,5 @@
 # python 3
-FROM agutt/e-mission-server:ceo_ebike_project_2022-09-19--45-23
+FROM shankari/e-mission-server:master_2022-09-22--20-37
 
 COPY conf /conf
 
