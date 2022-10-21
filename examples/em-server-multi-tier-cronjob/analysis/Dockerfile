@@ -1,5 +1,7 @@
 # python 3
-FROM shankari/e-mission-server:master_2022-09-22--20-37
+ARG SERVER_IMAGE_TAG=master_2022-10-09--26-05
+
+FROM shankari/e-mission-server:${SERVER_IMAGE_TAG}
 
 COPY conf /conf
 

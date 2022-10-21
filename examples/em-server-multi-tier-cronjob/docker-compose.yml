@@ -1,7 +1,10 @@
 version: "3"
 services:
   web-server:
-    build: webapp
+    build:
+      context: ./webapp
+      args:
+        SERVER_IMAGE_TAG: master_2022-10-09--26-05
     depends_on:
       - db
     environment:
@@ -20,7 +23,10 @@ services:
     networks:
       - emission
   analysis-server:
-    build: analysis
+    build:
+      context: ./analysis
+      args:
+        SERVER_IMAGE_TAG: master_2022-10-09--26-05
     depends_on:
       - db
     environment:
